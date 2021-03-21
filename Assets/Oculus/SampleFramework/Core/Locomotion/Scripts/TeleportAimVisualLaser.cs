@@ -19,6 +19,7 @@ public class TeleportAimVisualLaser : TeleportSupport
 	/// </summary>
 	[Tooltip("This prefab will be instantiated when the aim visual is awakened, and will be set active when the user is aiming, and deactivated when they are done aiming.")]
 	public LineRenderer LaserPrefab;
+	
 
 	private readonly Action _enterAimStateAction;
 	private readonly Action _exitAimStateAction;
@@ -47,6 +48,7 @@ public class TeleportAimVisualLaser : TeleportSupport
 	{
 		LaserPrefab.gameObject.SetActive(false);
 		_lineRenderer = Instantiate(LaserPrefab);
+		_lineRenderer.transform.SetParent(gameObject.transform);
 	}
 
 	protected override void AddEventHandlers()
